@@ -1,15 +1,18 @@
 package com.actitime.test;
 
+import static org.testng.Assert.fail;
+
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.actitime.generics.BaseClass;
 import com.actitime.pom.EnterTimeTrackPage;
 import com.actitime.pom.TaskListPage;
-
+@Listeners(com.actitime.generics.ListenerImplementation.class)
 public class CreateCustomer extends BaseClass {
 	@Test
 	public void testCreateCustomer() throws EncryptedDocumentException, IOException, InterruptedException {
@@ -31,6 +34,7 @@ public class CreateCustomer extends BaseClass {
 		t.getCopyProjectDropDown().click();
 		//Select our company in the drop drown
 		t.getOurCompanyMenu().click();
+	    Assert.fail();
 		//Click on Create Customer button
 		t.getCreateCustomerBtn().click();
 		//Verify the Customer is successfully create or not

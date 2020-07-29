@@ -5,8 +5,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
@@ -21,14 +23,14 @@ public class BaseClass {
 	public static WebDriver driver;
 	public FileLib f=new FileLib();
 	
-	@BeforeTest
+	@BeforeClass
 	public void openBrowser() {
 		System.out.println("open browser");	
 		driver=new ChromeDriver();	
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	@AfterTest
+	@AfterClass
 	public void closeBrowser() {
 		System.out.println("close browser");
 		driver.close();
